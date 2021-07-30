@@ -7,9 +7,9 @@ ENV GO111MODULE=on
 ENV SERVER_PORT=5000
 ENV DB_HOST=localhost
 ENV DB_PORT=3306
-ENV DB_NAME=dockerize
+ENV DB_NAME=learn_docker_db
 ENV DB_USER=root
-ENV DB_PASSWORD=S@ntosh111me
+ENV DB_PASSWORD=password
 
 # create your own working directory
 WORKDIR /my-app
