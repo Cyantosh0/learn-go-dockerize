@@ -6,12 +6,13 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/cyantosh0/dockerize-go-app/model"
+	"github.com/cyantosh0/dockerize-go-app/repository"
 )
 
 // GetUsers ... Get all users
 func GetUsers(c *gin.Context) {
 	var user []model.User
-	err := model.GetAllUsers(&user)
+	err := repository.GetAllUsers(&user)
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
 		return
@@ -27,7 +28,7 @@ func CreateUser(c *gin.Context) {
 		return
 	}
 
-	err := model.CreateUser(&user)
+	err := repository.CreateUser(&user)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -40,7 +41,7 @@ func GetUserByID(c *gin.Context) {
 	id := c.Params.ByName("id")
 
 	var user model.User
-	err := model.GetUserByID(&user, id)
+	err := repository.GetUserByID(&user, id)
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
 		return

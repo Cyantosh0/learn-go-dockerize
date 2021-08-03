@@ -8,6 +8,7 @@ import (
 	"github.com/joho/godotenv"
 
 	"github.com/cyantosh0/dockerize-go-app/config"
+	"github.com/cyantosh0/dockerize-go-app/model"
 	"github.com/cyantosh0/dockerize-go-app/route"
 )
 
@@ -18,7 +19,7 @@ func main() {
 	}
 
 	config.DB = config.SetupDatabase()
-	// config.DB.AutoMigrate(&model.User{})
+	config.DB.AutoMigrate(&model.User{})
 
 	r := route.SetupRouter()
 

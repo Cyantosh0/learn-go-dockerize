@@ -1,0 +1,73 @@
+openapi: 3.0.0
+info:
+  title: API documentation
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000/
+tags:
+  - name: User
+paths:
+  /check:
+    get:
+      summary: Check if Server is Running
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /user/:
+    get:
+      summary: Check if User Routes is Running
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /user/get-users:
+    get:
+      tags:
+        - User
+      summary: Get all Users
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /user/create:
+    post:
+      tags:
+        - User
+      summary: Create New User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                id: 1
+                name: User1
+                email: user1@gmail.com
+                phone: '9801121345'
+                address: Suryabinyak
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /user/get-user/{id}:
+    get:
+      tags:
+        - User
+      summary: Get User by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            example: "c68abb4c-827c-4e5e-9714-8022695c2f20"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

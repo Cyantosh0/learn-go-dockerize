@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+    app:
+        container_name: dockerize_go_app
+        build:
+            context: .
+            dockerfile: ./app.Dockerfile
+        ports: 
+          - 5000:5000
+        restart: on-failure
+        volumes:
+          - .:/dockerize-go-app
+        depends_on:
+          - database
+
+    db:
+        image: mysql/mysql-server:8.0.26
+        container_name: mysql_container
+        environment:
+            MYSQL_ROOT_PASSWORD: my_secret_password
+            MYSQL_DATABASE: app_db
+            MYSQL_USER: db_user
+            MYSQL_PASSWORD: db_password
+        ports:
+            - "6033:3306"
+        volumes:
+            - dbdata:/var/lib/mysql
+            
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: pma_container
+        links:
+            - db
+        environment:
+            PMA_HOST: db
+            PMA_PORT: 3306
+            PMA_ARBITRARY: 1
+        restart: always
+        ports:
+            - 5001:80
+
+    swagger-ui:
+        image: swaggerapi/swagger-ui
+        container_name: swagger_ui_container
+        ports:
+            - "80:8080"
+        volumes:
+            - ./doc/user.yaml:/user.yaml
+        environment:
+            SWAGGER_JSON: /user.yaml
+
+volumes:
+    dbdata:
