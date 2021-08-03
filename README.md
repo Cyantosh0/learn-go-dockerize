@@ -1,4 +1,23 @@
-# Learn Docker with me
+# Run app with docker
+Create .env file in root directory and copy all variables from .env.example file into .env
+
+Run app
+> docker-compose up
+if permission required; Use
+> sudo docker-compose up
+
+To stop
+> docker-compose down
+
+## Manage database and tables with phpmyadmin
+Browse to http://localhost:5001/index.php
+Login with username and password as db_user and db_password correspondingly
+You can find app_db schema has been created with table `users`
+
+## Checking API documents with swagger UI
+Browse to http://localhost
+You can see all the documented endpoints in UI
+You can execute any endpoint with no worries
 
 ## Some most used docker commands
 
@@ -29,3 +48,13 @@ To list all the docker containers that are being run.
 
 #### docker stop container_id
 To stop docker container that is being run
+
+#### docker volume ls
+To list all docker volume
+
+#### docker volume rm volume_name
+To delete the volume
+
+#### docker rm -f $(docker ps -a -q)
+The Daemon might be using the volume; due to which we might not be able to delete the volume.
+After success run above command. Delete volume with command
