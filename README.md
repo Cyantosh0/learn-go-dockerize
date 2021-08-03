@@ -3,7 +3,8 @@ Create .env file in root directory and copy all variables from .env.example file
 
 Run app
 > docker-compose up
-if permission required; Use
+
+If permission required; Use
 > sudo docker-compose up
 
 To stop
