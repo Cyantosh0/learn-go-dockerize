@@ -11,8 +11,6 @@ services:
         restart: on-failure
         volumes:
           - .:/dockerize-go-app
-        depends_on:
-          - database
 
     db:
         image: mysql/mysql-server:8.0.26
@@ -30,12 +28,9 @@ services:
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         container_name: pma_container
-        links:
-            - db
         environment:
             PMA_HOST: db
             PMA_PORT: 3306
-            PMA_ARBITRARY: 1
         restart: always
         ports:
             - 5001:80
