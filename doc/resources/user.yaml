@@ -3,6 +3,8 @@ UserPath:
     tags:
       - User
     summary: Get all Users
+    security:
+      - BearerAuth: []
     responses:
       '200':
         $ref: '../responses/success_response.yaml'
@@ -29,6 +31,8 @@ UserPathWithID:
     tags:
       - User
     summary: Get User by ID
+    security:
+      - BearerAuth: []
     parameters:
       - in: path
         name: id

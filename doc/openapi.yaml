@@ -17,4 +17,7 @@ paths:
 components:
   schemas:
     User:
-      $ref: './schemas/index.yaml#/User'
+      $ref: './schemas/user_schema.yaml'
+  securitySchemes:
+    BearerAuth:
+      $ref: './schemas/security_schema.yaml'
