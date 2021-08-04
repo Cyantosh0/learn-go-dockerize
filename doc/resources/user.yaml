@@ -1,0 +1,41 @@
+UserPath:
+  get:
+    tags:
+      - User
+    summary: Get all Users
+    responses:
+      '200':
+        $ref: '../responses/success_response.yaml'
+  post:
+    tags:
+      - User
+    summary: Create New User
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/user_schema.yaml'
+            example:
+              id: 1
+              name: User1
+              email: user1@gmail.com
+              phone: '9801121345'
+              address: Suryabinyak
+    responses:
+      '200':
+        $ref: '../responses/success_response.yaml'
+UserPathWithID:
+  get:
+    tags:
+      - User
+    summary: Get User by ID
+    parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+          example: "1"
+    responses:
+      '200':
+        $ref : "../responses/success_response.yaml"

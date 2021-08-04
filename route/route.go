@@ -23,13 +23,9 @@ func SetupRouter() *gin.Engine {
 
 	user := r.Group("/user")
 	{
-		user.GET("/", func(c *gin.Context) {
-			c.JSON(200, gin.H{"message": "User routes Up and running....."})
-		})
-
-		user.GET("/get-users", controller.GetUsers)
-		user.POST("/create", controller.CreateUser)
-		user.GET("/get-user/:id", controller.GetUserByID)
+		user.GET("/", controller.GetUsers)
+		user.POST("/", controller.CreateUser)
+		user.GET("/:id", controller.GetUserByID)
 	}
 	return r
 }

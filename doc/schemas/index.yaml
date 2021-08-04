@@ -1,0 +1,2 @@
+User:
+  $ref: './user_schema.yaml'

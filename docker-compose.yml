@@ -41,9 +41,9 @@ services:
         ports:
             - "80:8080"
         volumes:
-            - ./doc/user.yaml:/user.yaml
+            - ./doc:/usr/share/nginx/html/doc
         environment:
-            SWAGGER_JSON: /user.yaml
+            API_URL: doc/openapi.yaml
 
 volumes:
     dbdata:
