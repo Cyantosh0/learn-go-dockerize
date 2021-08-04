@@ -21,6 +21,8 @@ func main() {
 	config.DB = config.SetupDatabase()
 	config.DB.AutoMigrate(&model.User{})
 
+	config.FB = config.SetupFirebase()
+
 	r := route.SetupRouter()
 
 	r.Run(":" + os.Getenv("SERVER_PORT"))

@@ -14,7 +14,7 @@ func SetupDatabase() *gorm.DB {
 
 	DB, err := gorm.Open("mysql", dsn)
 	if err != nil {
-		fmt.Println("Status:", err)
+		fmt.Println("Database Setup Error:", err)
 	}
 
 	return DB
