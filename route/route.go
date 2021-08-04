@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/cyantosh0/dockerize-go-app/controller"
+	"github.com/cyantosh0/dockerize-go-app/middleware"
 )
 
 func SetupRouter() *gin.Engine {
@@ -23,9 +24,12 @@ func SetupRouter() *gin.Engine {
 
 	user := r.Group("/user")
 	{
-		user.GET("/", controller.GetUsers)
 		user.POST("/", controller.CreateUser)
-		user.GET("/:id", controller.GetUserByID)
+		user.Use(middleware.AuthRequired)
+		{
+			user.GET("/", controller.GetUsers)
+			user.GET("/:id", controller.GetUserByID)
+		}
 	}
 	return r
 }
