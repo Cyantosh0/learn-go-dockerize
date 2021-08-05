@@ -7,8 +7,6 @@ servers:
 tags:
   - name: User
 paths:
-  /check:
-    $ref: './resources/check.yaml'
   /user/:
     $ref: './resources/user.yaml#/UserPath'
   /user/{id}:

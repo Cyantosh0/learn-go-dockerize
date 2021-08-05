@@ -43,7 +43,10 @@ services:
         volumes:
             - ./doc:/usr/share/nginx/html/doc
         environment:
-            API_URL: doc/openapi.yaml
+            # API_URL: doc/openapi.yaml
+            URLS: "[{ url: \"doc/openapi.yaml\", name: \"UserManagement\" },
+                    { url: \"doc/checkapi.yaml\", name: \"CheckServer\" },
+                ]"
 
 volumes:
     dbdata:

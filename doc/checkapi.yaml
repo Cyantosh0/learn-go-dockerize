@@ -1,0 +1,9 @@
+openapi: 3.0.0
+info:
+  title: Check API documentation
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000/
+paths:
+  /check:
+    $ref: './resources/check.yaml'
