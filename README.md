@@ -59,3 +59,9 @@ To delete the volume
 #### docker rm -f $(docker ps -a -q)
 The Daemon might be using the volume; due to which we might not be able to delete the volume.
 After success run above command. Delete volume with command
+  
+ #### docker rm -vf $(docker ps -aq)
+ To delete all containers including its volumes use
+  
+ #### docker rmi -f $(docker images -aq)
+ To delete all the images
