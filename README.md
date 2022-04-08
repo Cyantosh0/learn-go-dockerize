@@ -65,3 +65,6 @@ After success run above command. Delete volume with command
   
  #### docker rmi -f $(docker images -aq)
  To delete all the images
+  
+ #### docker volume rm $(docker volume ls -q)
+ Delete all volumes
